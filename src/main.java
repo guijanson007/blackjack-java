@@ -32,6 +32,7 @@ class Main {
         startFrame.add(startLabel);
         startFrame.showFrame(true);
 
+        game.start();
 
         JButton dealButton = new JButton("Deal");
         dealButton.setBounds(350, 450, 100, 50);
@@ -39,7 +40,7 @@ class Main {
         ActionListener dealButtonListener = new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                game.start();
+
             }
         };
         dealButton.addActionListener(dealButtonListener);

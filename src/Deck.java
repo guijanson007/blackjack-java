@@ -3,6 +3,8 @@ import utils.Constants;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Random;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 
 
 public class Deck {
@@ -23,41 +25,47 @@ public class Deck {
         int cardIdx = rand.nextInt(1, 15);
         int cardValue = this.cards.get(cardIdx).getValue();
         String cardSuit = this.cards.get(cardIdx).getSuit();
-        String filepath;
+        String aux;
+        Path path;
 
         switch (cardIdx) {
             case 1:
             case 11:
-                filepath = "/Users/guilhermejanson/projects/blackjack-java/assets/cards/ace_%s_white.png";
-                filepath = String.format(filepath, cardSuit);
+                aux = "ace_%s_white.png";
+                aux = String.format(aux, cardSuit);
+                path = Paths.get("assets","cards", aux);
                 break;
             case 12:
-                filepath = "/Users/guilhermejanson/projects/blackjack-java/assets/cards/jack_%s_white.png";
-                filepath = String.format(filepath, cardSuit);
+                aux = "jack_%s_white.png";
+                aux = String.format(aux, cardSuit);
+                path = Paths.get("assets","cards", aux);
                 break;
             case 13:
-                filepath = "/Users/guilhermejanson/projects/blackjack-java/assets/cards/joker_white.png";
+                path = Paths.get("assets","cards", "joker_white.png");
                 break;
             case 14:
-                filepath = "/Users/guilhermejanson/projects/blackjack-java/assets/cards/king_%s_white.png";
-                filepath = String.format(filepath, cardSuit);
+                aux = "king_%s_white.png";
+                aux = String.format(aux, cardSuit);
+                path = Paths.get("assets","cards", aux);
                 break;
             case 15:
-                filepath = "/Users/guilhermejanson/projects/blackjack-java/assets/cards/queen_%s_white.png";
-                filepath = String.format(filepath, cardSuit);
+                aux = "queen_%s_white.png";
+                aux = String.format(aux, cardSuit);
+                path = Paths.get("assets","cards", aux);
                 break;
             default:
-                filepath = "/Users/guilhermejanson/projects/blackjack-java/assets/cards/%d_%s_white.png";
-                filepath = String.format(filepath, cardValue, cardSuit);
+                aux = "%d_%s_white.png";
+                aux = String.format(aux, cardValue, cardSuit);
+                path = Paths.get("assets","cards", aux);
         }
         this.cards.remove(cardIdx);
-        return new Card(filepath);
+        return new Card(path.toAbsolutePath());
     }
 
     public Card blankCard() {
-        String filepath = "/Users/guilhermejanson/projects/blackjack-java/assets/cards/back_black_basic.png";
-        Card blankCard = new Card(filepath);
-        return blankCard;
+        Path path = Paths.get("assets","cards", "back_black_basic.png");
+        path = path.toAbsolutePath();
+        return new Card(path);
     }
 
     public void shuffle() {

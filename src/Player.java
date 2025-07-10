@@ -6,10 +6,14 @@ import java.util.ArrayList;
 public class Player {
     private ArrayList<Card> cards = new ArrayList<Card>();
     private int points;
-    private int pos_x = 10;
-    private int pos_y = 10;
+    private int pos_x;
+    private int pos_y;
 
-    public Player() {}
+    public Player() {
+        pos_x = 0;
+        pos_y = 0;
+        points = 0;
+    }
 
     public void deal(Card card, Frame frame) {
         if (!card.getImage().isValid()) {
@@ -22,4 +26,11 @@ public class Player {
         pos_x += Constants.CARD_WIDTH + 5;
     }
 
+    public void setPos_x(int pos_x) {
+        this.pos_x = pos_x;
+    }
+
+    public void setPos_y(int pos_y) {
+        this.pos_y = pos_y;
+    }
 }

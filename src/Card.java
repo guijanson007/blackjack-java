@@ -1,5 +1,6 @@
 import utils.ImagePanel;
 
+import java.nio.file.Path;
 import java.util.ArrayList;
 
 public class Card {
@@ -7,10 +8,10 @@ public class Card {
     private final String suit;
     private final ImagePanel image = new ImagePanel();
 
-    Card (String filepath) {
+    Card (Path filepath) {
         this.value = 0;
         this.suit = null;
-        this.image.initialize(filepath);
+        this.image.initialize(String.valueOf(filepath));
     }
 
     Card (int value, String suit) {
