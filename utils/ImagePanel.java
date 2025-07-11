@@ -23,7 +23,7 @@ public class ImagePanel extends JPanel{
             image = ImageIO.read(new File(filepath));
             this.isValid = true;
         } catch (IOException ex) {
-            System.out.println("Error reading image file");
+            System.out.println("Error reading image file: " + filepath);
             this.isValid = false;
         }
     }

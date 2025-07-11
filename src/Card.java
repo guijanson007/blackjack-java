@@ -14,6 +14,12 @@ public class Card {
         this.image.initialize(String.valueOf(filepath));
     }
 
+    Card (Path filepath, int value, String suit) {
+        this.image.initialize(String.valueOf(filepath));
+        this.value = value;
+        this.suit = suit;
+    }
+
     Card (int value, String suit) {
         this.value = value;
         this.suit = suit;
@@ -30,6 +36,7 @@ public class Card {
     public void setValue(int value) {
         this.value = value;
     }
+
     public int getValue() {
         if (this.value > 11) {
             return 10;

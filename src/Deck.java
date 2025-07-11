@@ -59,7 +59,7 @@ public class Deck {
                 path = Paths.get("assets","cards", aux);
         }
         this.cards.remove(cardIdx);
-        return new Card(path.toAbsolutePath());
+        return new Card(path.toAbsolutePath(), cardValue, cardSuit);
     }
 
     public Card blankCard() {

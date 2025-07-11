@@ -34,8 +34,11 @@ class Main {
 
         game.start();
 
-        JButton dealButton = new JButton("Deal");
-        dealButton.setBounds(350, 450, 100, 50);
+        JButton dealButton = new JButton("Hit");
+        dealButton.setBounds(250, 450, 100, 50);
+
+        JButton standButton = new JButton("Stand");
+        standButton.setBounds(400, 450, 100, 50);
 
         ActionListener dealButtonListener = new ActionListener() {
             @Override
@@ -45,6 +48,7 @@ class Main {
         };
         dealButton.addActionListener(dealButtonListener);
         mainFrame.add(dealButton);
+        mainFrame.add(standButton);
 
     }
 }

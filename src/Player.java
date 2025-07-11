@@ -24,6 +24,8 @@ public class Player {
         frame.add(card.getImage());
         frame.updateFrame();
         pos_x += Constants.CARD_WIDTH + 5;
+
+        this.points += card.getValue();
     }
 
     public void setPos_x(int pos_x) {
@@ -32,5 +34,13 @@ public class Player {
 
     public void setPos_y(int pos_y) {
         this.pos_y = pos_y;
+    }
+
+    public int getPoints() {
+        return this.points;
+    }
+
+    public void setPoints(int points) {
+        this.points = points;
     }
 }

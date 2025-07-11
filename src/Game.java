@@ -1,4 +1,6 @@
 import utils.Frame;
+import static utils.Constants.DEALER_WINS;
+import static utils.Constants.PLAYER_WINS;
 
 public class Game {
     private Deck deck = new Deck();
@@ -30,5 +32,19 @@ public class Game {
         this.player.deal(deck.pickCard(), this.frame);
     }
 
+    public void hit() {
+        this.player.deal(deck.pickCard(), this.frame);
+    }
+
+    public void stand() {
+
+    }
+
+    public int end() {
+        if (this.player.getPoints() > this.dealer.getPoints()) {
+            return PLAYER_WINS;
+        }
+        return DEALER_WINS;
+    }
 
 }
