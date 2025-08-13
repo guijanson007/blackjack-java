@@ -22,14 +22,13 @@ public class Deck {
     }
 
     public Card pickCard() {
-        int cardIdx = rand.nextInt(1, 15);
+        int cardIdx = rand.nextInt(2, 14);
         int cardValue = this.cards.get(cardIdx).getValue();
         String cardSuit = this.cards.get(cardIdx).getSuit();
         String aux;
         Path path;
 
         switch (cardIdx) {
-            case 1:
             case 11:
                 aux = "ace_%s_white.png";
                 aux = String.format(aux, cardSuit);

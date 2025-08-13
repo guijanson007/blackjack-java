@@ -34,19 +34,31 @@ class Main {
 
         game.start();
 
+
         JButton dealButton = new JButton("Hit");
         dealButton.setBounds(250, 450, 100, 50);
-
-        JButton standButton = new JButton("Stand");
-        standButton.setBounds(400, 450, 100, 50);
 
         ActionListener dealButtonListener = new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-
+                game.hit();
             }
         };
         dealButton.addActionListener(dealButtonListener);
+
+
+
+        JButton standButton = new JButton("Stand");
+        standButton.setBounds(400, 450, 100, 50);
+
+        ActionListener standButtonListener = new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                game.stand();
+            }
+        };
+        standButton.addActionListener(standButtonListener);
+
         mainFrame.add(dealButton);
         mainFrame.add(standButton);
 

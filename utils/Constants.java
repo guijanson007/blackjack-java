@@ -14,4 +14,5 @@ public final class Constants {
     public static final int CENTER_VERT = FRAME_HEIGHT / 2;
     public static final int PLAYER_WINS = 1;
     public static final int DEALER_WINS = 2;
+    public static final int ERROR_EVALUATION = 3;
 }

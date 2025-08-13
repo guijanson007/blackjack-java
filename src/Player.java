@@ -26,6 +26,7 @@ public class Player {
         pos_x += Constants.CARD_WIDTH + 5;
 
         this.points += card.getValue();
+        System.out.println("Points: " + this.points);
     }
 
     public void setPos_x(int pos_x) {
@@ -38,6 +39,10 @@ public class Player {
 
     public int getPoints() {
         return this.points;
+    }
+
+    public boolean isBust () {
+        return this.getPoints() > 21;
     }
 
     public void setPoints(int points) {
