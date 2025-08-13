@@ -25,8 +25,9 @@ public class Player {
         frame.updateFrame();
         pos_x += Constants.CARD_WIDTH + 5;
 
-        this.points += card.getValue();
-        System.out.println("Points: " + this.points);
+        this.increasePoints(card.getValue());
+        System.out.println("Card value: "  + card.getValue());
+        System.out.println("Points: " + this.getPoints());
     }
 
     public void setPos_x(int pos_x) {
@@ -37,15 +38,20 @@ public class Player {
         this.pos_y = pos_y;
     }
 
+
     public int getPoints() {
         return this.points;
     }
 
-    public boolean isBust () {
-        return this.getPoints() > 21;
-    }
-
     public void setPoints(int points) {
         this.points = points;
+    }
+
+    public void increasePoints(int points) {
+        this.points += points;
+    }
+
+    public boolean isBust () {
+        return this.getPoints() > 21;
     }
 }

@@ -14,7 +14,7 @@ public class Deck {
     Deck () {}
 
     public void buildDeck() {
-        for (int i = 1; i <= Constants.DECK_SIZE; i++) {
+        for (int i = 2; i <= Constants.DECK_SIZE; i++) {
             for (int j = 0; j < Constants.SUITS.length; j++) {
                     this.cards.add(new Card(i, Constants.SUITS[j]));
                 }
@@ -22,7 +22,7 @@ public class Deck {
     }
 
     public Card pickCard() {
-        int cardIdx = rand.nextInt(2, 14);
+        int cardIdx = rand.nextInt(2, Constants.DECK_SIZE);
         int cardValue = this.cards.get(cardIdx).getValue();
         String cardSuit = this.cards.get(cardIdx).getSuit();
         String aux;
@@ -54,7 +54,7 @@ public class Deck {
                 break;
             default:
                 aux = "%d_%s_white.png";
-                aux = String.format(aux, cardValue, cardSuit);
+                aux = String.format(aux, cardIdx, cardSuit);
                 path = Paths.get("assets","cards", aux);
         }
         this.cards.remove(cardIdx);
