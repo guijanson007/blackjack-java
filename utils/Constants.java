@@ -1,10 +1,16 @@
 package utils;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+
 public final class Constants {
 
     public Constants() {}
 
-    public static final String[] SUITS = {"clubs", "spades", "diamonds", "hearts"};
+    private static final String[] aux = {"clubs", "spades", "diamonds", "hearts"};
+    public static final ArrayList<String> SUITS = new ArrayList<String>(Arrays.asList(aux));
+    public static final int LOWEST_VALUE = 2;
+    public static final int HIGHEST_VALUE = 15;
     public static final int CARD_WIDTH = 100;
     public static final int CARD_HEIGHT = 100;
     public static final int DECK_SIZE = 14;

@@ -28,10 +28,10 @@ public class Game {
 
     public void start() {
         this.deck.buildDeck();
-        this.deck.shuffle();
+        //this.deck.shuffle();
         //this.dealer.deal(deck.blankCard(), this.frame);
-        this.dealer.deal(deck.pickCard(), this.frame);
         this.player.deal(deck.pickCard(), this.frame);
+        this.dealer.deal(deck.pickCard(), this.frame);
     }
 
     public void hit() {

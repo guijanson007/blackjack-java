@@ -1,34 +1,31 @@
 import utils.Constants;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Random;
+import java.util.*;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
 
 public class Deck {
-    private ArrayList<Card> cards = new ArrayList<Card>();
     private final Random rand = new Random();
+    private Map<Integer, ArrayList<String>> cards  = new HashMap<Integer, ArrayList<String>>();
 
     Deck () {}
 
     public void buildDeck() {
-        for (int i = 2; i <= Constants.DECK_SIZE; i++) {
-            for (int j = 0; j < Constants.SUITS.length; j++) {
-                    this.cards.add(new Card(i, Constants.SUITS[j]));
-                }
-            }
+        for (int i = Constants.LOWEST_VALUE; i <= Constants.HIGHEST_VALUE; i++) {
+            this.cards.put(i,new ArrayList<>(Constants.SUITS));
+        }
     }
 
     public Card pickCard() {
-        int cardIdx = rand.nextInt(2, Constants.DECK_SIZE);
-        int cardValue = this.cards.get(cardIdx).getValue();
-        String cardSuit = this.cards.get(cardIdx).getSuit();
+        int cardValue = rand.nextInt(Constants.LOWEST_VALUE, (Constants.HIGHEST_VALUE + 1));
+
+        int randomSuitIdx = rand.nextInt(0, Constants.SUITS.size());
+        String cardSuit = this.cards.get(cardValue).get(randomSuitIdx);
+
         String aux;
         Path path;
-
-        switch (cardIdx) {
+        switch (cardValue) {
             case 11:
                 aux = "ace_%s_white.png";
                 aux = String.format(aux, cardSuit);
@@ -54,10 +51,10 @@ public class Deck {
                 break;
             default:
                 aux = "%d_%s_white.png";
-                aux = String.format(aux, cardIdx, cardSuit);
+                aux = String.format(aux, cardValue, cardSuit);
                 path = Paths.get("assets","cards", aux);
         }
-        this.cards.remove(cardIdx);
+        removeValue(this.cards, cardValue, cardSuit);
         return new Card(path.toAbsolutePath(), cardValue, cardSuit);
     }
 
@@ -67,11 +64,32 @@ public class Deck {
         return new Card(path);
     }
 
-    public void shuffle() {
+    // Helper method to remove a specific value from the list associated with a key
+    private static <K, V> void removeValue(Map<K, ArrayList<V>> map, K key, V value) {
+        // Get the list for the key, or null if the key doesn't exist
+        ArrayList<V> values = map.get(key);
+        if (values == null) {
+            return; // Key doesn't exist
+        }
+
+        // Remove the specific value from the list
+        boolean removed = values.remove(value);
+        if (removed) {
+            // If the list is now empty, remove the key from the map
+            if (values.isEmpty()) {
+                map.remove(key);
+            } else {
+                // Update the map with the modified list
+                map.put(key, values);
+            }
+        }
+    }
+
+    /*public void shuffle() {
         for (int i = 0; i < Constants.DECK_SIZE; i++) {
             Collections.swap(cards, i, rand.nextInt(Constants.DECK_SIZE));
         }
     }
-
+*/
 }
 
