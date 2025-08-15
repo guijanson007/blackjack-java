@@ -13,14 +13,16 @@ public class Game {
 
         //player initial conditions
         this.player = player;
-        player.setPos_x(10);
-        player.setPos_y(10);
+        player.setCardPos_x(10);
+        player.setCardPos_y(10);
+        player.setPointsBounds(400, 10, 200, 200);
         player.setPoints(0);
 
         //dealer initial conditions
         this.dealer = dealer;
-        dealer.setPos_x(10);
-        dealer.setPos_y(250);
+        dealer.setCardPos_x(10);
+        dealer.setCardPos_y(250);
+        dealer.setPointsBounds(400, 250, 200, 200);
         dealer.setPoints(0);
 
         this.frame = frame;
@@ -28,8 +30,8 @@ public class Game {
 
     public void start() {
         this.deck.buildDeck();
-        //this.deck.shuffle();
-        //this.dealer.deal(deck.blankCard(), this.frame);
+        this.frame.add(this.player.getPointsLabel());
+        this.frame.add(this.dealer.getPointsLabel());
         this.player.deal(deck.pickCard(), this.frame);
         this.dealer.deal(deck.pickCard(), this.frame);
     }

@@ -2,7 +2,7 @@ package utils;
 
 import java.awt.*;
 
-import javax.swing.JFrame;
+import javax.swing.*;
 
 public class Frame  {
     private final JFrame frame = new JFrame();
