@@ -5,6 +5,7 @@ import utils.PointsLabel;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Arrays;
 
 
 class Main {
@@ -71,6 +72,8 @@ class Main {
         mainFrame.add(dealerPointsLabel);
         mainFrame.add(dealButton);
         mainFrame.add(standButton);
+
+
 
     }
 }

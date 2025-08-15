@@ -28,6 +28,7 @@ public class Player {
         this.increasePoints(card.getValue());
 
         pointsLabel.setPoints(this.getPoints());
+        pointsLabel.revalidate();
 
         frame.updateFrame();
     }
