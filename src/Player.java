@@ -10,14 +10,13 @@ public class Player {
     private int card_pos_x;
     private int card_pos_y;
 
-
     public Player() {
         card_pos_x = 0;
         card_pos_y = 0;
         points = 0;
     }
 
-    public void deal(Card card, Frame frame, PointsLabel playerPointsLabel, PointsLabel dealerPointsLabel) {
+    public void deal(Card card, Frame frame, PointsLabel pointsLabel) {
         if (!card.getImage().isValid()) {
             return;
         }
@@ -28,8 +27,7 @@ public class Player {
         card_pos_x += Constants.CARD_WIDTH + 5;
         this.increasePoints(card.getValue());
 
-        playerPointsLabel.setPoints(this.getPoints());
-        dealerPointsLabel.setPoints(this.getPoints());
+        pointsLabel.setPoints(this.getPoints());
 
         frame.updateFrame();
     }

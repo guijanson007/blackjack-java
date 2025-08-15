@@ -20,6 +20,7 @@ class Main {
 
         JButton startButton = new JButton("Start");
         startButton.setBounds(350, 450, 100, 50);
+
         ActionListener startButtonListener = new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {

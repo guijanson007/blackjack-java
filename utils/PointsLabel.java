@@ -7,6 +7,7 @@ public class PointsLabel extends JLabel {
 
     public PointsLabel() {
         this.pointsLabel = new JLabel();
+        pointsLabel.setVisible(true);
     }
 
     public void setPoints(int points) {

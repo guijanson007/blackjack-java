@@ -29,8 +29,8 @@ public class Game {
 
     public void start(PointsLabel playerPointsLabel, PointsLabel dealerPointsLabel) {
         this.deck.buildDeck();
-        this.player.deal(deck.pickCard(), this.frame, playerPointsLabel,dealerPointsLabel);
-        this.dealer.deal(deck.pickCard(), this.frame, playerPointsLabel,dealerPointsLabel);
+        this.player.deal(deck.pickCard(), this.frame, playerPointsLabel);
+        this.dealer.deal(deck.pickCard(), this.frame, dealerPointsLabel);
     }
 
     public void hit(PointsLabel playerPointsLabel, PointsLabel dealerPointsLabel) {
@@ -38,14 +38,14 @@ public class Game {
             return;
         }
         else {
-            this.player.deal(deck.pickCard(), this.frame, playerPointsLabel,dealerPointsLabel);
+            this.player.deal(deck.pickCard(), this.frame, playerPointsLabel);
         }
     }
 
     public void stand(PointsLabel playerPointsLabel, PointsLabel dealerPointsLabel) {
         while (!this.dealer.isBust()) {
 
-            this.dealer.deal(deck.pickCard(), this.frame, playerPointsLabel,dealerPointsLabel);
+            this.dealer.deal(deck.pickCard(), this.frame, dealerPointsLabel);
 
             try {
                 Thread.sleep(1000);
