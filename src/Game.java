@@ -1,4 +1,5 @@
 import utils.Frame;
+import utils.PointsLabel;
 
 import static utils.Constants.*;
 
@@ -15,40 +16,36 @@ public class Game {
         this.player = player;
         player.setCardPos_x(10);
         player.setCardPos_y(10);
-        player.setPointsBounds(400, 10, 200, 200);
         player.setPoints(0);
 
         //dealer initial conditions
         this.dealer = dealer;
         dealer.setCardPos_x(10);
         dealer.setCardPos_y(250);
-        dealer.setPointsBounds(400, 250, 200, 200);
         dealer.setPoints(0);
 
         this.frame = frame;
     }
 
-    public void start() {
+    public void start(PointsLabel playerPointsLabel, PointsLabel dealerPointsLabel) {
         this.deck.buildDeck();
-        this.frame.add(this.player.getPointsLabel());
-        this.frame.add(this.dealer.getPointsLabel());
-        this.player.deal(deck.pickCard(), this.frame);
-        this.dealer.deal(deck.pickCard(), this.frame);
+        this.player.deal(deck.pickCard(), this.frame, playerPointsLabel,dealerPointsLabel);
+        this.dealer.deal(deck.pickCard(), this.frame, playerPointsLabel,dealerPointsLabel);
     }
 
-    public void hit() {
+    public void hit(PointsLabel playerPointsLabel, PointsLabel dealerPointsLabel) {
         if (this.player.isBust()) {
             return;
         }
         else {
-            this.player.deal(deck.pickCard(), this.frame);
+            this.player.deal(deck.pickCard(), this.frame, playerPointsLabel,dealerPointsLabel);
         }
     }
 
-    public void stand() {
+    public void stand(PointsLabel playerPointsLabel, PointsLabel dealerPointsLabel) {
         while (!this.dealer.isBust()) {
 
-            this.dealer.deal(deck.pickCard(), this.frame);
+            this.dealer.deal(deck.pickCard(), this.frame, playerPointsLabel,dealerPointsLabel);
 
             try {
                 Thread.sleep(1000);

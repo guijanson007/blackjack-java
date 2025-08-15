@@ -9,16 +9,15 @@ public class Player {
     private int points;
     private int card_pos_x;
     private int card_pos_y;
-    private PointsLabel pointsLabel;
+
 
     public Player() {
         card_pos_x = 0;
         card_pos_y = 0;
         points = 0;
-        pointsLabel = new PointsLabel();
     }
 
-    public void deal(Card card, Frame frame) {
+    public void deal(Card card, Frame frame, PointsLabel playerPointsLabel, PointsLabel dealerPointsLabel) {
         if (!card.getImage().isValid()) {
             return;
         }
@@ -29,7 +28,8 @@ public class Player {
         card_pos_x += Constants.CARD_WIDTH + 5;
         this.increasePoints(card.getValue());
 
-        this.pointsLabel.setPoints(this.getPoints());
+        playerPointsLabel.setPoints(this.getPoints());
+        dealerPointsLabel.setPoints(this.getPoints());
 
         frame.updateFrame();
     }
@@ -41,11 +41,6 @@ public class Player {
     public void setCardPos_y(int pos_y) {
         this.card_pos_y = pos_y;
     }
-
-    public void setPointsBounds(int pos_x, int pos_y, int width, int height) {
-        this.pointsLabel.setBounds(pos_x, pos_y, width, height);
-    }
-
 
     public int getPoints() {
         return this.points;
@@ -63,7 +58,4 @@ public class Player {
         return this.getPoints() >= 21;
     }
 
-    public PointsLabel getPointsLabel() {
-        return this.pointsLabel;
-    }
 }

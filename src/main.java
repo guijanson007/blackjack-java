@@ -1,5 +1,7 @@
 import utils.Constants;
 import utils.Frame;
+import utils.PointsLabel;
+
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -11,6 +13,8 @@ class Main {
         Frame mainFrame = new Frame();
         Player player = new Player();
         Player dealer = new Player();
+        PointsLabel playerPointsLabel = new PointsLabel();
+        PointsLabel dealerPointsLabel = new PointsLabel();
         Deck deck = new Deck();
         Game game = new Game(deck, player, dealer, mainFrame);
 
@@ -32,7 +36,7 @@ class Main {
         startFrame.add(startLabel);
         startFrame.showFrame(true);
 
-        game.start();
+        game.start(playerPointsLabel, dealerPointsLabel);
 
 
         JButton dealButton = new JButton("Hit");
@@ -41,7 +45,7 @@ class Main {
         ActionListener dealButtonListener = new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                game.hit();
+                game.hit(playerPointsLabel, dealerPointsLabel);
             }
         };
         dealButton.addActionListener(dealButtonListener);
@@ -54,11 +58,16 @@ class Main {
         ActionListener standButtonListener = new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                game.stand();
+                game.stand(playerPointsLabel, dealerPointsLabel);
             }
         };
         standButton.addActionListener(standButtonListener);
 
+        playerPointsLabel.setBounds(300, 10, 200, 200);
+        dealerPointsLabel.setBounds(300, 250, 200, 200);
+
+        mainFrame.add(playerPointsLabel);
+        mainFrame.add(dealerPointsLabel);
         mainFrame.add(dealButton);
         mainFrame.add(standButton);
 
